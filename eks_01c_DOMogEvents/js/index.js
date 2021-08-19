@@ -1,9 +1,7 @@
-// "DOMContentLoaded" 'en sørger for, at Javascriptet først kører når hele HTML dokumentet er indlæst
 document.addEventListener("DOMContentLoaded", () => {
 	const plusBtn = document.querySelector("#btn-count-increase");
 	const minusBtn = document.querySelector("#btn-count-decrease");
 	const txtElement = document.querySelector("#text-count");
-	let isPlus;
 	let count = 5;
 	let maxCount = 15;
 	let minCount = 0;
@@ -13,26 +11,20 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 	updateCount();
 
-	function countCondition(){
-		if(isPlus == true){
-			if(count < maxCount){
-				count++;
-			}
-		} else {
-			if(count > minCount){
-				count--;
-			}
+	function countCondition(direction){
+		if(direction == "inc" && count < maxCount){
+			count++;
+		} else if (direction == "dec" && count > minCount){
+			count--;
 		}
+		updateCount();
+		console.log(direction);
 	}
 
 	plusBtn.addEventListener("click", () => {
-		isPlus = true;
-		countCondition();
-		updateCount();
+		countCondition("inc");
 	});
 	minusBtn.addEventListener("click", () => {
-		isPlus = false;
-		countCondition();
-		updateCount();
+		countCondition("dec");
 	});
-}); // Afslutter: DOMContentLoaded
+});
