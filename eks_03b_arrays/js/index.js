@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	const arr = ["Lise", "Markus", "Julian"];
 
 	function makeElements(array){
-		for(let i = 0; i<array.length; i++){
+		array.forEach((name)=>{
 			let element = document.createElement("li");
 			liste.append(element);
-			element.append(array[i]);
-		}
-	}
+			element.append(name);
+		});
+	};
 
 	makeElements(arr);
 
